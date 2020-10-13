@@ -13,9 +13,10 @@
 
 - [x] prop
 - [x] pick
-- [ ] omit
-- [ ] ifElse
+- [x] omit
+- [x] ifElse
 - [ ] tryCatch
+- [ ] orElse
 
 - [ ] match
 

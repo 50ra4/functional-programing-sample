@@ -8,3 +8,4 @@ export * from './equals';
 export * from './prop';
 export * from './pick';
 export * from './omit';
+export * from './ifElse';
