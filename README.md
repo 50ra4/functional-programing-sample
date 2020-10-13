@@ -15,7 +15,7 @@
 - [x] pick
 - [x] omit
 - [x] ifElse
-- [ ] tryCatch
+- [x] tryCatch
 - [ ] orElse
 
 - [ ] match
