@@ -24,17 +24,3 @@ export function tryCatch<T, A extends ReadonlyArray<unknown>>(tryer: (...args: A
   }
   return __tryCatch(tryer, catcher);
 }
-
-// export const tryCatch = <A extends ReadonlyArray<unknown>, B, C>(
-//   fn: (...a: A) => boolean,
-//   onTrue: (...a: A) => B,
-//   onFalse: (...a: A) => C,
-// ): IfElseReturnType<A, B, C> => {
-//   return (...args: A) => {
-//     if (fn(...args)) {
-//       return onTrue(...args);
-//     } else {
-//       return onFalse(...args);
-//     }
-//   };
-// };
