@@ -35,6 +35,7 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/semi": ["error", "always"],
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "complexity": ["error", 12],
     "quotes": ["error", "single", { "avoidEscape": true }],
     // turn on errors for missing imports
