@@ -1,6 +1,4 @@
-import { anyPass } from 'ramda';
-import { equals } from '.';
-import { flow } from './functions';
+import { equals, anyPass, flow } from '.';
 
 export type SafePred<A> = (...a: readonly A[]) => boolean;
 
@@ -65,7 +63,6 @@ export const isNil = (x: unknown): x is undefined | null => flow(getValueType, i
 const isEmptyString = (x: unknown): x is '' => getValueType(x) === ValueType.string && equals(x, '');
 const isEmptyObject = (x: unknown): x is {} => getValueType(x) === ValueType.object && equals(x, {});
 const isEmptyArray = <T>(x: unknown): x is T[] => getValueType(x) === ValueType.array && equals(x, []);
-
-export const isEmpty = <T = unknown>(value: T): boolean => {
-  return anyPass([isNil, isEmptyString, isEmptyObject, isEmptyArray])(value);
+export const isEmpty = <T = unknown>(x: unknown): x is undefined | null | '' | {} | T[] => {
+  return anyPass([isNil, isEmptyString, isEmptyObject, isEmptyArray])(x);
 };
