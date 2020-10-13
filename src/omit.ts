@@ -1,5 +1,7 @@
+import { clone } from '.';
+
 const __omit = <T, K extends string | number | symbol>(names: readonly K[], obj: T): Omit<T, K> => {
-  return Object.entries(obj)
+  return Object.entries(clone(obj))
     .filter(([name]) => !names.includes(name as K))
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as Omit<T, K>);
 };

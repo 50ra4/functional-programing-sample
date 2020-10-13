@@ -1,7 +1,9 @@
+import { clone } from '.';
+
 type PickReturnType<T, K extends string | number | symbol> = Pick<T, Exclude<keyof T, Exclude<keyof T, K>>>;
 
 const __pick = <T, K extends string>(names: readonly K[], obj: T): PickReturnType<T, K> => {
-  return Object.entries(obj)
+  return Object.entries(clone(obj))
     .filter(([name]) => names.includes(name as K))
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as PickReturnType<T, K>);
 };

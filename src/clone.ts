@@ -34,5 +34,5 @@ const replacer = (_key: string, value: unknown): unknown => {
 };
 
 export const clone = <T extends Object>(obj: T): Readonly<T> => {
-  return JSON.parse(JSON.stringify(obj, replacer), reviver);
+  return JSON.parse(JSON.stringify(obj, replacer), reviver) as Readonly<T>;
 };
