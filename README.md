@@ -11,14 +11,15 @@
 - [x] equals
 - [x] of
 
-prop
-pick
-omit
-ifElse
-tryCatch
+- [x] prop
+- [x] pick
+- [x] omit
+- [x] ifElse
+- [x] tryCatch
+- [ ] orElse
 
-match
+- [ ] match
 
-by
-and
-both
+- [ ] by
+- [ ] and
+- [ ] both

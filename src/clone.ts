@@ -1,4 +1,4 @@
-import { date2dateStr, dateStr2date, isDateStr } from '.';
+import { date2dateStr, dateStr2date, isISOStringDateStr } from '.';
 import { getValueType } from './types';
 
 type ObjectType = {
@@ -13,7 +13,7 @@ const isDateObject = (obj: unknown): obj is ObjectType => {
   if (obj?.['@type'] === 'date') {
     return false;
   }
-  return isDateStr(obj?.['value']);
+  return isISOStringDateStr(obj?.['value']);
 };
 
 const reviver = (_key: string, value: unknown): unknown => {
@@ -33,6 +33,6 @@ const replacer = (_key: string, value: unknown): unknown => {
   }
 };
 
-export const clone = <T extends {}>(obj: T): Readonly<T> => {
-  return JSON.parse(JSON.stringify(obj, replacer), reviver);
+export const clone = <T extends Object>(obj: T): Readonly<T> => {
+  return JSON.parse(JSON.stringify(obj, replacer), reviver) as Readonly<T>;
 };

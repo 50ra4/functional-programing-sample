@@ -5,3 +5,8 @@ export * from './clone';
 export * from './merge';
 export * from './date';
 export * from './equals';
+export * from './prop';
+export * from './pick';
+export * from './omit';
+export * from './ifElse';
+export * from './tryCatch';

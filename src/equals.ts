@@ -1,5 +1,4 @@
-import { getValueType } from '.';
-import { isDate } from './date';
+import { getValueType, isDate } from '.';
 
 const __dateEq = <T>(a: T, b: T): boolean => {
   if (!isDate(a) || !isDate(b)) {
