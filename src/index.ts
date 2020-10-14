@@ -10,3 +10,5 @@ export * from './pick';
 export * from './omit';
 export * from './ifElse';
 export * from './tryCatch';
+export * from './getOrElse';
+export * from './array';

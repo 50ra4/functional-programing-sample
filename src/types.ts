@@ -1,9 +1,5 @@
 import { equals, anyPass, flow } from '.';
 
-export type SafePred<A> = (...a: readonly A[]) => boolean;
-
-export const of = <T>(x: T): T[] => [x];
-
 export const ValueType = {
   string: 'string',
   number: 'number',
@@ -59,10 +55,11 @@ export const getValueType = (value: unknown): ValueType => {
 const NullValueType: Readonly<ValueType>[] = [ValueType.undefined, ValueType.null];
 const isNillValueType = (v: ValueType) => NullValueType.includes(v);
 export const isNil = (x: unknown): x is undefined | null => flow(getValueType, isNillValueType)(x);
+export const isNonNullable = <T = unknown>(x: T): x is NonNullable<T> => !isNil(x);
 
-const isEmptyString = (x: unknown): x is '' => getValueType(x) === ValueType.string && equals(x, '');
-const isEmptyObject = (x: unknown): x is {} => getValueType(x) === ValueType.object && equals(x, {});
-const isEmptyArray = <T>(x: unknown): x is T[] => getValueType(x) === ValueType.array && equals(x, []);
+export const isEmptyString = (x: unknown): x is '' => getValueType(x) === ValueType.string && equals(x, '');
+export const isEmptyObject = (x: unknown): x is {} => getValueType(x) === ValueType.object && equals(x, {});
+export const isEmptyArray = <T = unknown>(x: unknown): x is T[] => getValueType(x) === ValueType.array && equals(x, []);
 export const isEmpty = <T = unknown>(x: unknown): x is undefined | null | '' | {} | T[] => {
   return anyPass([isNil, isEmptyString, isEmptyObject, isEmptyArray])(x);
 };
