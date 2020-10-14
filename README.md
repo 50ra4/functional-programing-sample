@@ -22,9 +22,6 @@
 - [x] match
 
 - [ ] Either
-- [ ] 
-
-
 
 - [ ] by
 - [ ] and
