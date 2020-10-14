@@ -20,12 +20,3 @@
 
 - [x] cond
 - [x] match
-
-- [ ] Either
-- [ ] 
-
-
-
-- [ ] by
-- [ ] and
-- [ ] both

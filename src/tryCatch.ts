@@ -19,8 +19,8 @@ export function tryCatch<T, A extends ReadonlyArray<unknown>>(
   tryer: (...args: A) => T,
 ): (catcher: (...args: A) => T) => (...args: A) => T;
 export function tryCatch<T, A extends ReadonlyArray<unknown>>(tryer: (...args: A) => T, catcher?: (...args: A) => T) {
-  if (typeof catcher === 'undefined') {
+  if (arguments.length === 1) {
     return (_catcher: (...args: A) => T) => __tryCatch(tryer, _catcher);
   }
-  return __tryCatch(tryer, catcher);
+  return __tryCatch(tryer, catcher!);
 }

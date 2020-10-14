@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable prefer-rest-params */
 
 export const always = <T>(v: T) => () => v;
