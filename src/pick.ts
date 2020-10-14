@@ -11,8 +11,8 @@ const __pick = <T, K extends string>(names: readonly K[], obj: T): PickReturnTyp
 export function pick<T, K extends keyof T>(names: readonly K[], obj: T): PickReturnType<T, K>;
 export function pick<K extends string>(names: readonly K[]): <T>(obj: T) => PickReturnType<T, K>;
 export function pick<T, K extends string>(names: readonly K[], obj?: T) {
-  if (typeof obj === 'undefined') {
+  if (arguments.length === 1) {
     return (_obj: T) => __pick(names, _obj);
   }
-  return __pick(names, obj);
+  return __pick(names, obj!);
 }

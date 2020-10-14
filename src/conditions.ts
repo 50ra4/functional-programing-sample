@@ -3,19 +3,19 @@ type SafePred<A extends ReadonlyArray<unknown>> = (...a: A) => boolean;
 export function all<T>(fn: (a: T) => boolean, list: readonly T[]): boolean;
 export function all<T>(fn: (a: T) => boolean): (list: readonly T[]) => boolean;
 export function all<T>(fn: (a: T) => boolean, list?: readonly T[]) {
-  if (typeof list === 'undefined') {
+  if (arguments.length === 1) {
     return (_list: readonly T[]) => _list.every(fn);
   }
-  return list.every(fn);
+  return list!.every(fn);
 }
 
 export function any<T>(fn: (a: T) => boolean, list: readonly T[]): boolean;
 export function any<T>(fn: (a: T) => boolean): (list: readonly T[]) => boolean;
 export function any<T>(fn: (a: T) => boolean, list?: readonly T[]) {
-  if (typeof list === 'undefined') {
+  if (arguments.length === 1) {
     return (_list: readonly T[]) => _list.some(fn);
   }
-  return list.some(fn);
+  return list!.some(fn);
 }
 
 export const allPass = <T extends ReadonlyArray<unknown>>(fns: SafePred<T>[]) => (...value: T): boolean =>

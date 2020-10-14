@@ -59,7 +59,7 @@ const __equals = <T>(a: T, b: T): boolean => {
 export function equals<T>(a: T, b: T): boolean;
 export function equals<T>(a: T): (b: T) => boolean;
 export function equals<T>(a: T, b?: T) {
-  if (typeof b === 'undefined') {
+  if (arguments.length === 1) {
     return (_b: T) => __equals(a, _b);
   }
   return __equals(a, b);

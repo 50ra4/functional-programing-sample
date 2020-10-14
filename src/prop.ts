@@ -9,8 +9,8 @@ export function prop<P extends keyof T, T extends object>(p: P, obj: T): T[P];
 export function prop<P extends string>(p: P): <T extends object>(obj: Record<P, T>) => T;
 export function prop<P extends string, T extends object>(p: P): (obj: Record<P, T>) => T;
 export function prop<P extends string, T extends object>(p: P, obj?: Record<P, T> | T) {
-  if (typeof obj === 'undefined') {
+  if (arguments.length === 1) {
     return <T>(_obj: Record<P, T>) => __prop(p, _obj);
   }
-  return __prop(p, obj);
+  return __prop(p, obj!);
 }
