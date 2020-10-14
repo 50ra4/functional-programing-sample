@@ -41,3 +41,5 @@ export const match = <A extends ReadonlyArray<unknown>, B>(
   onDefault: (...params: A) => B, //
   fns: CondFns<A, B>[],
 ) => (...params: A): B => cond(fns)(...params) || onDefault(...params);
+
+export const not = <A extends ReadonlyArray<unknown>>(pred: SafePred<A>) => (...params: A): boolean => !pred(...params);
