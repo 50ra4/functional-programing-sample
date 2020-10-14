@@ -1,7 +1,5 @@
 import { equals, anyPass, flow } from '.';
 
-export type SafePred<A> = (...a: readonly A[]) => boolean;
-
 export const of = <T>(x: T): T[] => [x];
 
 export const ValueType = {
@@ -62,7 +60,7 @@ export const isNil = (x: unknown): x is undefined | null => flow(getValueType, i
 
 const isEmptyString = (x: unknown): x is '' => getValueType(x) === ValueType.string && equals(x, '');
 const isEmptyObject = (x: unknown): x is {} => getValueType(x) === ValueType.object && equals(x, {});
-const isEmptyArray = <T>(x: unknown): x is T[] => getValueType(x) === ValueType.array && equals(x, []);
+const isEmptyArray = <T = unknown>(x: unknown): x is T[] => getValueType(x) === ValueType.array && equals(x, []);
 export const isEmpty = <T = unknown>(x: unknown): x is undefined | null | '' | {} | T[] => {
   return anyPass([isNil, isEmptyString, isEmptyObject, isEmptyArray])(x);
 };

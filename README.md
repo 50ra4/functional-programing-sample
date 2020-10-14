@@ -16,9 +16,15 @@
 - [x] omit
 - [x] ifElse
 - [x] tryCatch
-- [ ] orElse
+- [x] orElse
 
-- [ ] match
+- [x] cond
+- [x] match
+
+- [ ] Either
+- [ ] 
+
+
 
 - [ ] by
 - [ ] and
