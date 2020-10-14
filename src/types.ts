@@ -1,7 +1,5 @@
 import { equals, anyPass, flow } from '.';
 
-export const of = <T>(x: T): T[] => [x];
-
 export const ValueType = {
   string: 'string',
   number: 'number',
@@ -57,6 +55,7 @@ export const getValueType = (value: unknown): ValueType => {
 const NullValueType: Readonly<ValueType>[] = [ValueType.undefined, ValueType.null];
 const isNillValueType = (v: ValueType) => NullValueType.includes(v);
 export const isNil = (x: unknown): x is undefined | null => flow(getValueType, isNillValueType)(x);
+export const isNonNullable = <T = unknown>(x: T): x is NonNullable<T> => !isNil(x);
 
 export const isEmptyString = (x: unknown): x is '' => getValueType(x) === ValueType.string && equals(x, '');
 export const isEmptyObject = (x: unknown): x is {} => getValueType(x) === ValueType.object && equals(x, {});
