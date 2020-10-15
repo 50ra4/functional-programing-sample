@@ -1,4 +1,4 @@
-import { flow } from '@/index';
+import { flow } from '.';
 
 describe('flow', () => {
   it('number', () => {

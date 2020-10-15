@@ -1,4 +1,4 @@
-import { getOrElse, always } from '@/index';
+import { getOrElse, always } from '.';
 
 describe('getOrElse', () => {
   it('non nullable value', () => {

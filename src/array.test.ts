@@ -1,4 +1,4 @@
-import { of } from '@/index';
+import { of } from '.';
 
 describe('of', () => {
   it('single', () => {
