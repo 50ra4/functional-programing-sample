@@ -1,6 +1,5 @@
 /* eslint-disable prefer-rest-params */
-
-export const always = <T>(v: T) => () => v;
+export const always = <T>(v: T) => <A extends ReadonlyArray<unknown>>(...a: A) => v;
 
 export function flow<A extends ReadonlyArray<unknown>, B>(ab: (...a: A) => B): (...a: A) => B;
 export function flow<A extends ReadonlyArray<unknown>, B, C>(ab: (...a: A) => B, bc: (b: B) => C): (...a: A) => C;
