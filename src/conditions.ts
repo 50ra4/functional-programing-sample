@@ -46,40 +46,41 @@ export const match = <A extends ReadonlyArray<unknown>, B>(
 
 export const not = <A extends ReadonlyArray<unknown>>(pred: SafePred<A>) => (...params: A): boolean => !pred(...params);
 
-const numberOrStringLength = (a: number | string): number => (typeof a === 'string' ? length(a) : a);
+const numberOrStringOrArrayLength = (a: number | string | ReadonlyArray<unknown>): number =>
+  typeof a === 'number' ? a : length(a);
 
-export function lt<T extends number | string>(a: number, b: T): boolean;
-export function lt<T extends number | string>(a: number): (b: T) => boolean;
-export function lt<T extends number | string>(a: number, b?: T) {
+export function lt<T extends number | string | ReadonlyArray<unknown>>(a: number, b: T): boolean;
+export function lt(a: number): <T extends number | string | ReadonlyArray<unknown>>(b: T) => boolean;
+export function lt<T extends number | string | ReadonlyArray<unknown>>(a: number, b?: T) {
   if (arguments.length === 1) {
-    return (_b: T) => a < numberOrStringLength(_b);
+    return (_b: T) => a < numberOrStringOrArrayLength(_b);
   }
-  return a < numberOrStringLength(b!);
+  return a < numberOrStringOrArrayLength(b!);
 }
 
-export function lte<T extends number | string>(a: number, b: T): boolean;
-export function lte<T extends number | string>(a: number): (b: T) => boolean;
-export function lte<T extends number | string>(a: number, b?: T) {
+export function lte<T extends number | string | ReadonlyArray<unknown>>(a: number, b: T): boolean;
+export function lte(a: number): <T extends number | string | ReadonlyArray<unknown>>(b: T) => boolean;
+export function lte<T extends number | string | ReadonlyArray<unknown>>(a: number, b?: T) {
   if (arguments.length === 1) {
-    return (_b: T) => a <= numberOrStringLength(_b);
+    return (_b: T) => a <= numberOrStringOrArrayLength(_b);
   }
-  return a <= numberOrStringLength(b!);
+  return a <= numberOrStringOrArrayLength(b!);
 }
 
-export function gt<T extends number | string>(a: number, b: T): boolean;
-export function gt<T extends number | string>(a: number): (b: T) => boolean;
-export function gt<T extends number | string>(a: number, b?: T) {
+export function gt<T extends number | string | ReadonlyArray<unknown>>(a: number, b: T): boolean;
+export function gt(a: number): <T extends number | string | ReadonlyArray<unknown>>(b: T) => boolean;
+export function gt<T extends number | string | ReadonlyArray<unknown>>(a: number, b?: T) {
   if (arguments.length === 1) {
-    return (_b: T) => a > numberOrStringLength(_b);
+    return (_b: T) => a > numberOrStringOrArrayLength(_b);
   }
-  return a > numberOrStringLength(b!);
+  return a > numberOrStringOrArrayLength(b!);
 }
 
-export function gte<T extends number | string>(a: number, b: T): boolean;
-export function gte<T extends number | string>(a: number): (b: T) => boolean;
-export function gte<T extends number | string>(a: number, b?: T) {
+export function gte<T extends number | string | ReadonlyArray<unknown>>(a: number, b: T): boolean;
+export function gte(a: number): <T extends number | string | ReadonlyArray<unknown>>(b: T) => boolean;
+export function gte<T extends number | string | ReadonlyArray<unknown>>(a: number, b?: T) {
   if (arguments.length === 1) {
-    return (_b: T) => a >= numberOrStringLength(_b);
+    return (_b: T) => a >= numberOrStringOrArrayLength(_b);
   }
-  return a >= numberOrStringLength(b!);
+  return a >= numberOrStringOrArrayLength(b!);
 }
