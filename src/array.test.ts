@@ -1,12 +1,10 @@
 import { of } from '.';
 
 describe('of', () => {
-  it('single', () => {
+  it('Return the argument as an array', () => {
     expect([1]).toEqual(of(1));
     expect(['1']).toEqual(of('1'));
     expect([{ a: 'a', b: 1 }]).toEqual(of({ a: 'a', b: 1 }));
-  });
-  it('nest', () => {
     expect([[1]]).toEqual(of([1]));
   });
 });
