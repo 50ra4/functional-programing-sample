@@ -1,4 +1,4 @@
-import { flow } from '.';
+import { flow, always } from '.';
 
 describe('flow', () => {
   it('number', () => {
@@ -21,5 +21,13 @@ describe('flow', () => {
     const f = (s: string, n: number) => `${s}+${n.toString().padStart(2, '0')}`;
     const g = (n: string) => n + 'g';
     expect('f+03g').toEqual(flow(f, g)('f', 3));
+  });
+});
+
+describe('always', () => {
+  it('Return the argument as an array', () => {
+    expect(1).toEqual(always(1)());
+    expect('1').toEqual(always('1')());
+    expect([{ a: 'a', b: 1 }]).toEqual(always([{ a: 'a', b: 1 }])());
   });
 });
