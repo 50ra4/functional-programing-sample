@@ -14,7 +14,7 @@ describe('ifElse', () => {
       expect(inc(n)).toBe(testFn(n));
     });
   });
-  it('When the condition is met, the value of onTrue is returned.', () => {
+  it('When the condition is not met, the value of onFalse is returned.', () => {
     TEST_VALUE.filter(odd).map((n) => {
       expect(dec(n)).toBe(testFn(n));
     });
