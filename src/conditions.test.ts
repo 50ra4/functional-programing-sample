@@ -1,4 +1,4 @@
-import { allPass, anyPass, cond, match } from '.';
+import { allPass, always, anyPass, cond, match } from '.';
 
 const mod = (n: number) => n % 2 === 0;
 const odd = (n: number) => n % 2 === 1;
@@ -42,7 +42,7 @@ const HttpStatusCode = {
   404: 'Not Found',
 } as const;
 const equals = (statusCode: keyof typeof HttpStatusCode) => (n: number) => statusCode === n;
-const getMessage = (n: number) => HttpStatusCode[n] || '';
+const getMessage = (n: number): string => HttpStatusCode[n] || '';
 
 describe('cond', () => {
   const TEST_VALUE = [400, 401, 402, 403, 404];
@@ -67,7 +67,7 @@ describe('cond', () => {
 
 describe('match', () => {
   const TEST_VALUE = [400, 401, 402, 403, 404];
-  const testFn = match((n: number) => 'Payment Required', [
+  const testFn = match(always('Payment Required'), [
     [equals(400), getMessage],
     [equals(401), getMessage],
     [equals(403), getMessage],
